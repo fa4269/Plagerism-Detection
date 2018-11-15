@@ -7,8 +7,8 @@
     <ProjectGuid>{EC96A609-36F5-49D1-AED7-973FD6EF01D5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>StringMatching</RootNamespace>
-    <AssemblyName>StringMatching</AssemblyName>
+    <RootNamespace>StringSearching</RootNamespace>
+    <AssemblyName>StringSearching</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
