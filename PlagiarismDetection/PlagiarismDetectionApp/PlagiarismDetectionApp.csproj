@@ -50,7 +50,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\StringMatching\StringSearching.csproj">
+    <ProjectReference Include="..\StringSearching\StringSearching.csproj">
       <Project>{ec96a609-36f5-49d1-aed7-973fd6ef01d5}</Project>
       <Name>StringSearching</Name>
     </ProjectReference>
