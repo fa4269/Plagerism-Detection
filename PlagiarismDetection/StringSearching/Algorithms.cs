@@ -74,7 +74,7 @@ namespace StringSearching
             t[pos] = cnd;
 
         }
-        public int Lcs(string test, string solu, int x, int y)
+        public void Lcs(string test, string solu, int x, int y)
         {
             char[] testA = test.ToCharArray();
             char[] soluA = solu.ToCharArray();
@@ -100,7 +100,7 @@ namespace StringSearching
                 }
             }
 
-            return numA[x, y];
+            Console.WriteLine($"Longest Common Sub-sequence: {numA[x, y]/x}% chance of plagerism.");
         }
     }
 }
