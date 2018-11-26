@@ -40,7 +40,28 @@ namespace StringSearching
             }
 
             return p;
-        } 
+        }
+
+        /// <summary>
+        /// Rabin-Karp string searching algoritm.
+        /// </summary>
+        /// <param name="s">Main text string to search.</param>
+        /// <param name="p">Pattern to search for.</param>
+        /// <returns>A boolean representing whether p was found in s.</returns>
+        public static bool RabinKarp(string s, string p)
+        {
+            int patternHash = p.GetHashCode();
+            for (int i = 0; i <= s.Length - p.Length; i++)
+            {
+                // Need to implement rolling hash to make subsequent hash lookups constant
+                int stringHash = s.Substring(i, p.Length).GetHashCode();
+                if (stringHash == patternHash)
+                    if (s.Substring(i, p.Length) == p)
+                        return true;
+            }
+
+            return false;
+        }
 
         private static void KMP_Table(string w, ref int[] t)
         {
