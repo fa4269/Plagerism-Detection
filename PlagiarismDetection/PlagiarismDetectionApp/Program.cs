@@ -5,7 +5,8 @@ using System.Text;
 using System.Windows.Forms;
 using System.Threading.Tasks;
 using StringSearching;
-using algorithms;
+using System.IO;
+
 
 namespace PlagiarismDetectionApp
 {
