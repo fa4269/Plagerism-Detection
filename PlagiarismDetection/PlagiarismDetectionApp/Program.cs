@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 using System.Threading.Tasks;
 using StringSearching;
+using algorithms;
 
 namespace PlagiarismDetectionApp
 {
@@ -51,7 +53,9 @@ namespace PlagiarismDetectionApp
             string testLines = lines[0];
             string solutionLines = lines[1];
 
-            Lcs(testLines, solutionLines, testLines.Length, solutionLines.Length);
+            Algorithms x = new Algorithms();
+
+            x.Lcs(testLines, solutionLines, testLines.Length, solutionLines.Length);
 
         }
     }
