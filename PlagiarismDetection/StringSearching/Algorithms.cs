@@ -60,6 +60,7 @@ namespace StringSearching
                         return true;
             }
 
+            
             return false;
         }
 
@@ -95,7 +96,7 @@ namespace StringSearching
             t[pos] = cnd;
 
         }
-        public void Lcs(string test, string solu, int x, int y)
+        public static void Lcs(string test, string solu, int x, int y)
         {
             char[] testA = test.ToCharArray();
             char[] soluA = solu.ToCharArray();

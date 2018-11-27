@@ -33,6 +33,7 @@ namespace PlagiarismDetectionApp
             {
                 Console.WriteLine("Select Solution Document");
             }
+
             var fileStream1 = new FileStream(ofd1.FileName, FileMode.Open, FileAccess.Read);
             var fileStream2 = new FileStream(ofd2.FileName, FileMode.Open, FileAccess.Read);
 
@@ -46,6 +47,7 @@ namespace PlagiarismDetectionApp
 
             return lines;
         }
+
         [STAThread]
         static void Main(string[] args)
         {
@@ -54,9 +56,19 @@ namespace PlagiarismDetectionApp
             string testLines = lines[0];
             string solutionLines = lines[1];
 
-            Algorithms x = new Algorithms();
+            Algorithms.Lcs(testLines, solutionLines, testLines.Length, solutionLines.Length);
 
-            x.Lcs(testLines, solutionLines, testLines.Length, solutionLines.Length);
+            // KMP_
+            var sentences = testLines.Split('.');
+            int plagiarizedSentencesCount = 0;
+            foreach (var s in sentences)
+            {
+                if (Algorithms.KMP_Search(s, solutionLines).Count > 0)
+                    plagiarizedSentencesCount++;
+            }
+
+            Console.WriteLine($"KMP: {(float)plagiarizedSentencesCount * 100 / sentences.Length }% of sentences are plagiarized.");
+
 
         }
     }
