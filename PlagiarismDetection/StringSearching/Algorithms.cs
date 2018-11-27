@@ -121,8 +121,7 @@ namespace StringSearching
                     }
                 }
             }
-
-            Console.WriteLine($"Longest Common Sub-sequence: {numA[x, y]/x}% chance of plagerism.");
+            Console.WriteLine($"Longest Common Sub-sequence: {((float)numA[x, y]/x)*100}% chance of plagerism.");
         }
     }
 }
