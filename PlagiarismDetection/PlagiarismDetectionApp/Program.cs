@@ -53,8 +53,8 @@ namespace PlagiarismDetectionApp
         {
 
             string[] lines = FileSelection();
-            string testLines = lines[0].ToUpper();
-            string solutionLines = lines[1].ToUpper();
+            string testLines = lines[0].Trim().ToUpper();
+            string solutionLines = lines[1].Trim().ToUpper();
 
             Algorithms.Lcs(testLines, solutionLines, testLines.Length, solutionLines.Length);
 
