@@ -53,23 +53,31 @@ namespace PlagiarismDetectionApp
         {
 
             string[] lines = FileSelection();
-            string testLines = lines[0];
-            string solutionLines = lines[1];
+            string testLines = lines[0].ToUpper();
+            string solutionLines = lines[1].ToUpper();
 
             Algorithms.Lcs(testLines, solutionLines, testLines.Length, solutionLines.Length);
 
-            // KMP_
+            // KMP
             var sentences = testLines.Split('.');
-            int plagiarizedSentencesCount = 0;
+            int KMPSentencesCount = 0;
             foreach (var s in sentences)
             {
-                if (Algorithms.KMP_Search(s, solutionLines).Count > 0)
-                    plagiarizedSentencesCount++;
+                if (Algorithms.KMP_Search(solutionLines, s).Count > 0)
+                    KMPSentencesCount++;
             }
 
-            Console.WriteLine($"KMP: {(float)plagiarizedSentencesCount * 100 / sentences.Length }% of sentences are plagiarized.");
+            Console.WriteLine($"KMP: {(float)KMPSentencesCount * 100 / sentences.Length }% of sentences are plagiarized.");
 
+            // Rabin Karp
+            int rabinKarpCount = 0;
+            foreach (var s in sentences)
+            {
+                if (Algorithms.RabinKarp(solutionLines, s))
+                    rabinKarpCount++;
+            }
 
+            Console.WriteLine($"Rabin-Karp: {(float)rabinKarpCount * 100 / sentences.Length }% of sentences are plagiarized.");
         }
     }
 }
