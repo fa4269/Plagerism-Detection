@@ -10,6 +10,9 @@ namespace StringSearching
     {
         public static List<int> KMP_Search(string s, string w)
         {
+            if (w == String.Empty)
+                return new List<int>();
+
             int j = 0;
             int k = 0;
             var t = new int[w.Length + 1];

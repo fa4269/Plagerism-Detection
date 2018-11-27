@@ -12,7 +12,7 @@ namespace PlagiarismDetectionApp
 {
     class Program
     {
-        static string[] FileSelection()
+        static List<string> FileSelection()
         {
 
             OpenFileDialog ofd1 = new OpenFileDialog();
@@ -43,7 +43,7 @@ namespace PlagiarismDetectionApp
             string testLines = testReader.ReadToEnd();
             string solutionLines = solutionReader.ReadToEnd();
 
-            string[] lines = new string[] { testLines, solutionLines };
+            var lines = new List<string> { testLines, solutionLines };
 
             return lines;
         }
@@ -52,14 +52,14 @@ namespace PlagiarismDetectionApp
         static void Main(string[] args)
         {
 
-            string[] lines = FileSelection();
+            List<string> lines = FileSelection();
             string testLines = lines[0].Trim().ToUpper();
             string solutionLines = lines[1].Trim().ToUpper();
 
             Algorithms.Lcs(testLines, solutionLines, testLines.Length, solutionLines.Length);
 
             // KMP
-            var sentences = testLines.Split('.');
+            List<string> sentences = testLines.Split('.').Where(s => s != string.Empty).ToList();
             int KMPSentencesCount = 0;
             foreach (var s in sentences)
             {
@@ -67,7 +67,7 @@ namespace PlagiarismDetectionApp
                     KMPSentencesCount++;
             }
 
-            Console.WriteLine($"KMP: {(float)KMPSentencesCount * 100 / sentences.Length }% of sentences are plagiarized.");
+            Console.WriteLine($"KMP: {(float)KMPSentencesCount * 100 / sentences.Count }% of sentences are plagiarized.");
 
             // Rabin Karp
             int rabinKarpCount = 0;
@@ -77,7 +77,7 @@ namespace PlagiarismDetectionApp
                     rabinKarpCount++;
             }
 
-            Console.WriteLine($"Rabin-Karp: {(float)rabinKarpCount * 100 / sentences.Length }% of sentences are plagiarized.");
+            Console.WriteLine($"Rabin-Karp: {(float)rabinKarpCount * 100 / sentences.Count }% of sentences are plagiarized.");
         }
     }
 }
